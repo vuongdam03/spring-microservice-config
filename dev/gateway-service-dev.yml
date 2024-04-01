@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: order_service
+          uri: lb://order-service  # URI of the first service
+          predicates:
+            - Path=/order/**    # Route based on this path
+        - id: payment_service
+          uri: lb://payment-service  # URI of the first service
+          predicates:
+            - Path=/payment/**    # Route based on this path
